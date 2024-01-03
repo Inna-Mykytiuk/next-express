@@ -16,20 +16,20 @@ body,
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  scrollbar-width: none;
+  /* scrollbar-width: none;
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
-  }
+  } */
 }
 
-@layer components {
+/* @layer components {
   .max-container {
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
   }
-}
+} */
 
 main {
   width: 100%;

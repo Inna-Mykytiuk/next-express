@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
+import MobileMenu from "./MobileMenu";
 import { navLinks } from "@/constants";
 import clsx from "clsx";
 
@@ -22,7 +23,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <ul className="flex items-center justify-center gap-16 flex-2 max-md:hidden">
+        <ul className="flex items-center justify-center gap-14 flex-2 max-md:hidden">
           {navLinks.map((link, index) => (
             <li key={index}>
               <Route
@@ -31,7 +32,6 @@ const Navbar = () => {
               />
             </li>
           ))}
-
         </ul>
 
         <div
@@ -46,7 +46,10 @@ const Navbar = () => {
             aria="Sign up button"
             onClick={() => null}
           />
+        </div>
 
+        <div>
+          <MobileMenu />
         </div>
 
 
