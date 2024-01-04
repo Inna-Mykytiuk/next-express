@@ -7,13 +7,39 @@ import Route from "../ui/Route";
 import MobileMenu from "./MobileMenu";
 import { navLinks } from "@/constants";
 import clsx from "clsx";
+import useMenuActive from "@/hooks/useMenuActive";
 
 
 const Navbar = () => {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, []);
+
   return (
-    <nav className="py-4 w-full">
+    <nav className={clsx(
+      "py-4 w-full",
+      isScrolling
+        ? "fixed top-0 bg-white shadow-lg z-10"
+        : "relative"
+    )}>
       <div
-        className="flex items-center justify-between pb-5 w-[95%] mx-auto max-w-[1450px] border-b border-gray-100">
+        className={clsx(
+          "w-[95%] mx-auto max-w-[1450px] flex  items-center justify-between  border-b border-gray-100",
+          isScrolling && "pb-0 border-none",
+          !isScrolling && "pb-5"
+        )}>
         <div className="flex-1">
           <Link href={"/"}>
             <h1 className="text-3xl font-extrabold text-secondary">
@@ -24,14 +50,19 @@ const Navbar = () => {
         </div>
 
         <ul className="flex items-center justify-center gap-14 flex-2 max-md:hidden">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Route
-                route={link.route}
-                label={link.label}
-              />
-            </li>
-          ))}
+          {navLinks.map((link, index) => {
+            const isActive = useMenuActive(link.route);
+
+            return (
+              <li key={index}>
+                <Route
+                  route={link.route}
+                  label={link.label}
+                  isActive={isActive}
+                />
+              </li>
+            );
+          })}
         </ul>
 
         <div

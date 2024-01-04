@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaFacebookSquare } from "react-icons/fa";
 import { CgMenuGridO, CgClose } from "react-icons/cg";
