@@ -30,13 +30,13 @@ const page = ({ searchParams }: { searchParams: seachParamsType }) => {
   return (
     <div className="w-[95%] mx-auto max-w-[1450px]">
       <div className="w-full h-[400px] relative mb-5">
-        {/* <Image
+        <Image
           fill
           alt="image for blog"
           // src={post.image_path}
           src={post.image_path}
           className="object-cover"
-        /> */}
+        />
       </div>
 
       <Tag text={post.tags} />
