@@ -11,9 +11,9 @@ const BlogCard = ({ post }: any) => {
   return (
     <article className="relative rounded-lg overflow-hidden">
       <div className="w-[1000px] h-[450px] relative">
-        {post.img && (
+        {post.image_path && (
           <Image
-            src={post.img}
+            src={post.image_path}
             fill
             alt={`image for ${post.title}`}
             className="object-cover"
